@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= CONFIRM ACCOUNT SECTION ========================= -->
+<section class="section-content padding-y-sm bg">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <header class="card-header">
+                    <h4 class="card-title mt-2">Confirm Your Account</h4>
+                </header>
+                <article class="card-body">
+                    <p>Please check your email and click on the provided link to confirm your account. If you didn't receive the email, click the button below to resend the confirmation link.</p>
+                    <form>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Resend Confirmation Email </button>
+                        </div>
+                    </form>
+                </article>
+                <div class="border-top card-footer">
+                    <p class="text-center">Need help? Contact our <a href="#">support team</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- container //  -->
+</section>
+<!-- ========================= CONFIRM ACCOUNT SECTION END// ========================= -->
+{% endblock %}
