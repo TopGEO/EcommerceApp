@@ -1,4 +1,4 @@
-E-Commerce Webpage
+<h1>E-Commerce Webpage</h1>
 Welcome to our project repository! This e-commerce webpage is designed with a full suite of tools to enhance both user and administrator experiences. Key features include:
 
 User Accounts: Secure login and personal account management.
@@ -7,6 +7,6 @@ Security: Robust security measures to protect user data and transactions.
 Modern Design: A sleek, user-friendly interface that aligns with current design trends.
 Shopping Cart: An intuitive system for users to add products to their cart and manage them.
 
-Project Status
+<h1>Project Status</h1>
 Currently, some parts of the project are under development. We are working diligently to complete these components and anticipate a full launch soon. Stay tuned for updates!
 
