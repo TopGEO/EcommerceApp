@@ -1,17 +1,25 @@
+from urllib.parse import urlparse, parse_qs
+
 from django.contrib import auth, messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as auth_login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
+# Third-party library
+
+
+# local Django apps
 from accounts.forms import RegistrationForm
 from accounts.models import Account
+from carts.models import Cart, CartItem
+from carts.views import _cart_id
+
 
 
 def register(request):
@@ -48,12 +56,6 @@ def register(request):
     context = {'form': form, }
     return render(request, 'accounts/register.html', context)
 
-
-from django.contrib.auth import get_user_model
-from django.contrib.auth import authenticate, login as auth_login
-from django.contrib import messages
-from django.shortcuts import render, redirect
-
 def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -75,8 +77,52 @@ def login(request):
         # Now authenticate the user credentials.
         user = authenticate(email=email, password=password)
         if user:
+            try:
+                cart = Cart.objects.get(cart_id=_cart_id(request))
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
+                if is_cart_item_exists:
+                    cart_item = CartItem.objects.filter(cart=cart)
+                    product_variation = []
+                    for item in cart_item:
+                        variation = item.variations.all()
+                        product_variation.append(list(variation))
+                    cart_item = CartItem.objects.filter(user=user)
+                    ex_var_list = []
+                    id = []
+                    for item in cart_item:
+                        existing_variations = item.variations.all()
+                        ex_var_list.append(list(existing_variations))
+                        id.append(item.id)
+                    for pr in product_variation:
+                        if pr in ex_var_list:
+                            index = ex_var_list.index(pr)
+                            item_id = id[index]
+                            item = CartItem.objects.get(id=item_id)
+                            item.quantity += 1
+                            item.user = user
+                            item.save()
+                        else:
+                            cart_item = CartItem.objects.filter(cart=cart)
+                            for item in cart_item:
+                                item.user = user
+                                item.save()
+            except:
+                pass
             auth_login(request, user)
-            return redirect('dashboard')
+            referer_url = request.META.get('HTTP_REFERER', '')
+
+            # Parse the URL to extract the query part
+            parsed_url = urlparse(referer_url)
+            query_params = parse_qs(parsed_url.query)
+
+            # Attempt to extract the 'next' parameter from the query parameters
+            next_url = query_params.get('next', [None])[0]  # parse_qs returns lists of values
+
+            # Redirect to the 'next' URL if it exists, otherwise redirect to 'dashboard'
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('dashboard')
         else:
             # If authentication fails, send an invalid credentials message.
             messages.error(request, 'Invalid Credentials')
