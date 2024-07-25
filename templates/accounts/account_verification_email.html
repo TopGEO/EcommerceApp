@@ -1,5 +1,7 @@
 {% autoescape off %}
 Hi {{ user.first_name }}, click on the link bellow to confirm your registration:
+
 http://{{ domain }}{%  url 'activate' uidb64=uid token=token  %}
-    if its not you, ignore this.
+
+If its not you, ignore this.
 {% endautoescape %}

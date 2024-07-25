@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wvd-4zs0%_qce*mw!d+y+izp$aq0kqqobgnz$jfr_&)rcytcy#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['93.177.154.104', 'localhost', '0.0.0.0','127.0.0.1']
 
 
 # Application definition
@@ -41,7 +41,17 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'carts',
+    'orders',
 ]
+
+# settings.py
+
+PAYPAL_CLIENT_ID = 'AadUtrdR4Q9A8OrXM80oeXZ6ic_r5qa1guB81wXvZzjuYghTAkkU-SO_q5sLVklATzi-wC4Qtn7g0aIX'
+PAYPAL_CLIENT_SECRET = 'EJ6snDHghv5xHg_vrum3FyO-WTbgHAh2NmbMaVJN6HVGqk6gx72qOkr4m88XgXyfu_W4lYnu8URXcGTM'
+
+# Set environment ('sandbox' for testing, 'live' for production)
+PAYPAL_MODE = 'sandbox'  # Change to 'live' for production
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,5 +158,5 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'nikanatroshvili10@gmail.com'
-EMAIL_HOST_PASSWORD = 'adguecwyasxfdhen'
+EMAIL_HOST_PASSWORD = 'dltn lljd basy heyf'
 EMAIL_USE_TLS = True
