@@ -42,7 +42,6 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     phone_number = models.CharField(max_length=50,blank=True)
-
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -57,6 +56,9 @@ class Account(AbstractBaseUser):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email}"
+
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
