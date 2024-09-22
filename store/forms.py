@@ -1,6 +1,6 @@
 from django import forms
 
-from store.models import ReviewRating
+from store.models import ReviewRating, ProductGallery
 
 
 class ReviewForm(forms.ModelForm):

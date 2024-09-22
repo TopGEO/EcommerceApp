@@ -47,3 +47,22 @@ form div {
 .rating {
     color: #cc9000;
 }
+
+ul.thumb {
+    margin: 0 auto;
+    padding: 0;
+    float: left;
+}
+
+ul.thumb li {
+    list-style: none;
+    margin: 10px;
+    display: inline-block;
+}
+
+ul.thumb li img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid grey;
+}
