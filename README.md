@@ -1,12 +1,13 @@
 <h1>E-Commerce Webpage</h1>
-Welcome to our project repository! This e-commerce webpage is designed with a full suite of tools to enhance both user and administrator experiences. Key features include:
+Welcome to my project repository! I'm excited to share that this e-commerce webpage is fully completed. Designed as a test project, it's intended to demonstrate a complete, functional setup rather than for live sales. Here’s a breakdown of its key features:
 
-User Accounts: Secure login and personal account management.
-Admin Panel: Comprehensive control over product listings, including the ability to add and manage anything given on the page.
-Security: Robust security measures to protect user data and transactions.
-Modern Design: A sleek, user-friendly interface that aligns with current design trends.
-Shopping Cart: An intuitive system for users to add products to their cart and manage them.
-
-<h1>Project Status</h1>
-Currently, some parts of the project are under development. We are working diligently to complete these components and anticipate a full launch soon. Stay tuned for updates!
-
+User Accounts: Secure login and personalized account management.
+Admin Panel: A powerful backend interface to manage products, user data, and orders.
+Security: Robust measures to ensure a safe, simulated environment.
+Modern Design: A sleek, responsive front end built with the latest Bootstrap framework.
+Shopping Cart and Checkout: A complete cart system, with a PayPal-integrated checkout model for testing payment flows.
+<h1>Project Highlights</h1>
+Front-End: Developed using Bootstrap for a clean, user-friendly interface.
+Back-End: Powered by Django, providing robust functionality and scalability.
+Payment Simulation: Integrated with PayPal to demonstrate secure transactions in a test environment.
+This project is fully set up for demonstration purposes, offering a modern e-commerce experience without actual product sales. I hope it provides a clear view of my approach and capabilities in e-commerce development!
